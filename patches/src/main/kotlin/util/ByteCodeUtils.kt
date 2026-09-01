@@ -1,4 +1,4 @@
-package app.template.util
+package app.pyflat.util
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
