@@ -20,10 +20,10 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 <summary>📦 com.netbiscuits.kicker&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
 
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [Unlock Plus](#unlock-plus) | Unlocks the Plus subscription. |  |
-| [Unlock Pur](#unlock-pur) | Unlocks the Pur subscription. |  |
+| 💊&nbsp;Patch                | 📜&nbsp;Description             | ⚙️&nbsp;Options |
+| --------------------------- | ------------------------------ | -------------- |
+| [Unlock Plus](#unlock-plus) | Unlocks the Plus subscription. |                |
+| [Unlock Pur](#unlock-pur)   | Unlocks the Pur subscription.  |                |
 
 </details>
 
@@ -40,4 +40,4 @@ See the [Morphe documentation](https://github.com/MorpheApp/morphe-documentation
 
 ## 📜 License
 
-UserXYZ Patches are licensed under the [GNU General Public License v3.0](LICENSE)
+PyFlat-JR Patches are licensed under the [GNU General Public License v3.0](LICENSE)

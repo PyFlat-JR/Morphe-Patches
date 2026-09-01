@@ -1,8 +1,8 @@
-package app.template.patches.kicker
+package app.pyflat.patches.kicker
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.patch.bytecodePatch
-import app.template.util.injectEnumReturnByString
+import app.pyflat.util.injectEnumReturnByString
 
 internal object GetPurAboStateFingerprint : Fingerprint(
     definingClass = "KUserImpl;",
