@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -49,6 +50,7 @@ public final class HoldToSpeedUpController {
 
     private Player boostedPlayer;
     private float previousSpeed = 1f;
+    private boolean wasPaused;
     private TextView overlay;
 
     private final Runnable startBoostRunnable = this::startBoost;
@@ -123,9 +125,14 @@ public final class HoldToSpeedUpController {
             Log.e(TAG, "Failed to get player", ex);
             return;
         }
-        if (player == null
-                || player.getApplicationLooper() != Looper.getMainLooper()
-                || !player.isPlaying()
+        if (player == null) return;
+        if (player.getApplicationLooper() != Looper.getMainLooper()) {
+            Log.w(TAG, "Player is not on the main looper");
+            return;
+        }
+        int state = player.getPlaybackState();
+        if (state == Player.STATE_IDLE
+                || state == Player.STATE_ENDED
                 || player.isPlayingAd()
                 || player.isCurrentMediaItemLive()) {
             return;
@@ -133,6 +140,9 @@ public final class HoldToSpeedUpController {
 
         previousSpeed = player.getPlaybackParameters().speed;
         player.setPlaybackSpeed(speed);
+        // Like YouTube, holding a paused video plays it until released.
+        wasPaused = !player.getPlayWhenReady();
+        if (wasPaused) player.play();
         boostedPlayer = player;
 
         vibrate(view);
@@ -146,6 +156,7 @@ public final class HoldToSpeedUpController {
         hideOverlay();
         try {
             player.setPlaybackSpeed(previousSpeed);
+            if (wasPaused) player.pause();
         } catch (Exception ex) {
             Log.e(TAG, "Failed to restore playback speed", ex);
         }
@@ -166,8 +177,8 @@ public final class HoldToSpeedUpController {
     }
 
     private void showOverlay(View view) {
-        if (!(view.getParent() instanceof FrameLayout)) return;
-        FrameLayout parent = (FrameLayout) view.getParent();
+        FrameLayout parent = findFrameLayoutAncestor(view);
+        if (parent == null) return;
 
         if (overlay == null) {
             float density = view.getResources().getDisplayMetrics().density;
@@ -201,6 +212,13 @@ public final class HoldToSpeedUpController {
         if (overlay != null && overlay.getParent() != null) {
             ((ViewGroup) overlay.getParent()).removeView(overlay);
         }
+    }
+
+    private static FrameLayout findFrameLayoutAncestor(View view) {
+        for (ViewParent parent = view.getParent(); parent != null; parent = parent.getParent()) {
+            if (parent instanceof FrameLayout) return (FrameLayout) parent;
+        }
+        return null;
     }
 
     private static String formatSpeed(float speed) {
