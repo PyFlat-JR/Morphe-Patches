@@ -14,7 +14,7 @@ val unlockPlusPatch = bytecodePatch(
     name = "Unlock Plus",
     description = "Unlocks the Plus subscription.",
 ) {
-    compatibleWith("com.netbiscuits.kicker")
+    compatibleWith(COMPATIBILITY_KICKER)
     execute {
         injectEnumReturnByString(GetPlusAboStateFingerprint.method, "PLUS")
     }
