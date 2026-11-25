@@ -31,7 +31,7 @@ internal val COMPATIBILITY_DISNEY = Compatibility(
     appIconColor = 0x0E1A40,
     targets = listOf(
         AppTarget(version = null, isExperimental = true),
-        AppTarget(version = "26.18.0+rc5-2026.10.05"),
+        AppTarget(version = "26.21.0+rc3-2026.11.17"),
     ),
 )
 

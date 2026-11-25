@@ -17,7 +17,7 @@ internal val COMPATIBILITY_ARD = Compatibility(
     appIconColor = 0x003D8F,
     targets = listOf(
         AppTarget(version = null, isExperimental = true),
-        AppTarget(version = "12.4.1"),
+        AppTarget(version = "12.6.0"),
     ),
 )
 
