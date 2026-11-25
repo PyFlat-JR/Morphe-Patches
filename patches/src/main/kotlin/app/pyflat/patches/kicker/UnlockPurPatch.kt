@@ -14,7 +14,7 @@ val unlockPurPatch = bytecodePatch(
     name = "Unlock Pur",
     description = "Unlocks the Pur subscription.",
 ) {
-    compatibleWith("com.netbiscuits.kicker")
+    compatibleWith(COMPATIBILITY_KICKER)
     execute {
         injectEnumReturnByString(GetPurAboStateFingerprint.method, "PUR")
     }

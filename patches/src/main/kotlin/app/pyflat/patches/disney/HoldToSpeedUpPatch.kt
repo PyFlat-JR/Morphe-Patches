@@ -30,6 +30,7 @@ internal val COMPATIBILITY_DISNEY = Compatibility(
     apkFileType = ApkFileType.APKM,
     appIconColor = 0x0E1A40,
     targets = listOf(
+        AppTarget(version = null, isExperimental = true),
         AppTarget(version = "26.18.0+rc5-2026.10.05"),
     ),
 )
