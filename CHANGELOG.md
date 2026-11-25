@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/PyFlat-JR/Morphe-Patches/compare/v1.2.0...v1.2.1) (2026-11-25)
+
+### 🚀 Updated App Support
+
+* ARD Mediathek 12.6.0 and Disney+ 26.21.0+rc3-2026.11.17 ([9943576](https://github.com/PyFlat-JR/Morphe-Patches/commit/99435760f43e03b5e0604d232fc735e1e0e889a1))
+
 ## [1.2.1-dev.1](https://github.com/PyFlat-JR/Morphe-Patches/compare/v1.2.0...v1.2.1-dev.1) (2026-11-25)
 
 ### 🚀 Updated App Support
